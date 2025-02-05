@@ -5218,3 +5218,172 @@ body.loaded {
 .notification.slide-out {
   animation: slideOut 0.5s forwards;
 }
+
+/* Add new parallax section styles */
+.parallax-section {
+  position: relative;
+  height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.parallax-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(260deg, rgba(42, 20, 84, 0.85), rgba(135, 80, 247, 0.85));
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  color: var(--white-color);
+}
+
+.parallax-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.parallax-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.parallax-cta {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--white-color);
+  color: var(--primary-color);
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.parallax-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .parallax-section {
+    background-attachment: scroll;
+    height: 350px;
+  }
+
+  .parallax-title {
+    font-size: 2rem;
+  }
+
+  .parallax-text {
+    font-size: 1.1rem;
+  }
+}
+
+/* Add these styles for the progress circle */
+.progress-circle {
+  transform: rotate(-90deg);
+  /* Rotate to start from top */
+}
+
+.progress-circle path {
+  fill: none;
+  stroke: var(--primary-color);
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.progress-wrap {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.progress-wrap.active-progress {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.progress-wrap::after {
+  position: absolute;
+  content: '↑';
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--primary-color);
+  text-align: center;
+  line-height: 44px;
+  transition: all 0.3s ease;
+}
+
+.progress-wrap:hover::after {
+  color: var(--white-color);
+}
+
+.progress-wrap::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: var(--white-color);
+  border-radius: 50%;
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+.progress-wrap:hover::before {
+  transform: scale(1.1);
+  background: var(--primary-color);
+}
+
+/* Dark mode adjustments */
+.dark .progress-wrap::before {
+  background: var(--primary-color-light);
+}
+
+.dark .progress-wrap::after {
+  color: var(--white-color);
+}
+
+.dark .progress-wrap:hover::before {
+  background: var(--primary-color);
+}
+
+.dark .progress-circle path {
+  stroke: var(--white-color);
+}
+
+.container-custom {
+  width: 100%;
+  max-width: 1320px;
+  padding: 30px;
+  /* or whatever max-width you prefer */
+  margin-left: auto;
+  margin-right: auto;
+}
