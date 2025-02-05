@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
               )
                 .toString()
                 .padStart(2, "0")}</b>
+              <i class="${service.icon} text-2xl"></i>
               <b class="text-xl md:text-size-25 lg:text-3xl">${
                 service.title
               }</b>
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
               ${service.description}
             </span>
 
-            <i class="flaticon-up-right-arrow text-size-15 md:text-xl text-primary-color group-hover:text-white-color absolute top-[20%] md:top-1/2 right-5 lg:right-[55px] transition-all duration-300"></i>
+            <i class="fas fa-arrow-right text-size-15 md:text-xl text-primary-color group-hover:text-white-color absolute top-[20%] md:top-1/2 right-5 lg:right-[55px] transition-all duration-300"></i>
           </a>
         </div>
       `
@@ -70,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }s">
           <div class="resume-header">
             <div class="resume-icon">
-              <i class="fa-light fa-briefcase"></i>
+              <i class="fas fa-briefcase"></i>
             </div>
             <h4 class="resume-title">${job.title}</h4>
             <span class="resume-date">${job.date}</span>
@@ -100,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }s">
           <div class="resume-header">
             <div class="resume-icon">
-              <i class="fa-light fa-graduation-cap"></i>
+              <i class="fas fa-graduation-cap"></i>
             </div>
             <h4 class="resume-title">${edu.degree}</h4>
             <h5 class="resume-subtitle">
@@ -143,15 +144,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="relative z-10">
                   <div class="flex gap-5 items-center mb-2 justify-between">
                     <span class="text-sm font-medium text-primary-color group-hover:text-white-color transition-all duration-500">
-                      <i class="fa-light fa-calendar-days mr-0.5"></i> ${
-                        blog.date
-                      }
+                      <i class="fas fa-calendar-days mr-0.5"></i> ${blog.date}
                     </span>
                     <div class="flex gap-4">
                       ${
                         blog.videoUrl
                           ? `<button class="video-btn text-primary-color group-hover:text-white-color transition-all duration-500 hover:scale-110" data-video="${blog.videoUrl}">
-                              <i class="fa-light fa-play-circle text-2xl"></i>
+                              <i class="fas fa-play-circle text-2xl"></i>
                             </button>`
                           : ""
                       }
@@ -217,4 +216,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize contact form
   initializeContactForm();
+
+  // Initialize odometer for stats
+  const odometerElements = document.querySelectorAll(".odometer");
+  odometerElements.forEach((element) => {
+    const count = parseInt(element.getAttribute("data-count"));
+    const odometer = new Odometer({
+      el: element,
+      value: 0,
+      format: "",
+    });
+    odometer.update(count);
+  });
+
+  // Update stats with actual data
+  const experienceOdometer = document.querySelector(
+    '.odometer[data-count="1"]'
+  );
+  const projectsOdometer = document.querySelector('.odometer[data-count="15"]');
+
+  if (experienceOdometer) {
+    experienceOdometer.setAttribute(
+      "data-count",
+      data.profile.stats.experience.toString()
+    );
+    new Odometer({
+      el: experienceOdometer,
+      value: 0,
+      format: "",
+    }).update(data.profile.stats.experience);
+  }
+
+  if (projectsOdometer) {
+    projectsOdometer.setAttribute(
+      "data-count",
+      data.profile.stats.projects.toString()
+    );
+    new Odometer({
+      el: projectsOdometer,
+      value: 0,
+      format: "",
+    }).update(data.profile.stats.projects);
+  }
 });

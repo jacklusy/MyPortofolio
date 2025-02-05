@@ -1,14 +1,19 @@
 export const data = {
   profile: {
     personal_info: {
-      name: "JACK ALLOUSSI",
-      location: "Amman, Jordan",
-      phone: "(962) 778096919",
+      name: "Jack Alloussi",
       email: "jackalloussi23@gmail.com",
-      linkedin: "https://linkedin.com/in/jackalloussi",
+      phone: "+962 7 7871 7793",
+      location: "Amman, Jordan",
+      linkedin: "https://www.linkedin.com/in/jackalloussi/",
+      github: "https://github.com/jacklusy",
     },
     professional_summary:
-      "Enthusiastic Full Stack Developer and Software Engineer with proven expertise in PHP, Laravel, React, and React Native CLI. Adept at building innovative, user-centric applications, optimizing system performance, and enhancing engagement. Passionate about UI/UX design and real-time communication systems, with a strong background in both front-end and back-end development.",
+      "Passionate Full Stack Developer with expertise in PHP, Laravel, React, and modern web technologies. Committed to creating efficient, scalable solutions and delivering exceptional user experiences.",
+    stats: {
+      experience: 2,
+      projects: 15,
+    },
     skills: [
       "Git",
       "GitHub",
@@ -191,37 +196,37 @@ export const data = {
   ],
   services: [
     {
-      icon: "flaticon-web-development",
+      icon: "fas fa-code",
       title: "Full Stack Development",
       description:
         "Building end-to-end web applications using PHP, Laravel, React, and modern web technologies to create seamless user experiences.",
     },
     {
-      icon: "flaticon-mobile-development",
+      icon: "fas fa-mobile-alt",
       title: "Mobile Development",
       description:
         "Developing cross-platform mobile applications using React Native CLI with a focus on performance and user experience.",
     },
     {
-      icon: "flaticon-web-programming",
+      icon: "fas fa-server",
       title: "Backend Development",
       description:
         "Creating robust and scalable backend systems using PHP, Laravel, and MySQL with a focus on performance optimization.",
     },
     {
-      icon: "flaticon-web-design",
+      icon: "fas fa-paint-brush",
       title: "UI/UX Design",
       description:
         "Crafting intuitive user interfaces and experiences using modern design tools and frameworks like Bootstrap and Tailwind CSS.",
     },
     {
-      icon: "flaticon-optimization",
+      icon: "fab fa-wordpress",
       title: "WordPress Development",
       description:
         "Building and customizing WordPress websites with optimized performance and user-friendly content management.",
     },
     {
-      icon: "flaticon-app-development",
+      icon: "fas fa-cogs",
       title: "Software Engineering",
       description:
         "Implementing complex software solutions with a focus on clean code, testing, and best practices in software development.",
