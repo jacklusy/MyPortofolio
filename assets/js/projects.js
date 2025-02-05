@@ -258,4 +258,105 @@ document.addEventListener("DOMContentLoaded", function () {
       format: "",
     }).update(data.profile.stats.projects);
   }
+
+  // Initialize portfolio
+  initializePortfolio();
 });
+
+function initializePortfolio() {
+  const portfolioBox = document.querySelector(".portfolio-box");
+  if (!portfolioBox) return;
+
+  const { certificates, universityEvents } = data.portfolioData;
+
+  // Combine and format all portfolio items
+  const portfolioItems = [
+    ...certificates.map((cert) => ({
+      ...cert,
+      type: "certificates",
+      subtitle: cert.institution,
+    })),
+    ...universityEvents.map((event) => ({
+      ...event,
+      type: "events",
+      title: event.event,
+      subtitle: event.university,
+    })),
+  ];
+
+  // Generate portfolio items HTML
+  const portfolioHTML = portfolioItems
+    .map(
+      (item) => `
+    <div class="portfolio-item ${
+      item.type
+    } bg-body-color px-15px pt-25px pb-0 lg:p-9 lg:pb-0 rounded-10px group relative w-full md:w-[calc(50%-15px)] mb-[30px] inline-block">
+      <div class="relative overflow-hidden rounded-10px">
+        <img src="${item.image}" alt="${
+        item.title
+      }" class="w-full h-[400px] object-cover object-center rounded-10px">
+        <div class="absolute left-0 bottom-[15px] group-hover:bottom-5 translate-y-5 group-hover:translate-y-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible w-full px-15px lg:px-5 transition-all duration-300">
+          <div class="text-white-color p-15px pr-30px lg:p-5 lg:pr-50px bg-gradient-primary rounded-15px w-full">
+            <span class="block text-xl md:text-size-25 lg:text-3xl font-bold mb-2 lg:mb-15px">
+              ${item.title}
+            </span>
+            <span class="block text-body-color mb-2">
+              ${item.subtitle}
+            </span>
+            <ul class="text-body-color text-sm">
+              ${item.keyPoints.map((point) => `<li>${point}</li>`).join("")}
+            </ul>
+            <i class="fas fa-arrow-right text-size-15 md:text-xl text-primary-color group-hover:text-white-color absolute top-[20%] md:top-1/2 right-5 lg:right-[55px] transition-all duration-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  `
+    )
+    .join("");
+
+  portfolioBox.innerHTML = `
+    <div class="portfolio-sizer"></div>
+    <div class="gutter-sizer"></div>
+    ${portfolioHTML}
+  `;
+
+  // Initialize Isotope after images are loaded
+  imagesLoaded(portfolioBox, function () {
+    const iso = new Isotope(portfolioBox, {
+      itemSelector: ".portfolio-item",
+      percentPosition: true,
+      masonry: {
+        columnWidth: ".portfolio-sizer",
+        gutter: 30,
+      },
+      transitionDuration: "0.6s",
+    });
+
+    // Handle filter buttons
+    const filterButtons = document.querySelectorAll(
+      ".filter-button-group button"
+    );
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filterValue = button.getAttribute("data-filter");
+        iso.arrange({
+          filter: filterValue,
+          transitionDuration: "0.6s",
+        });
+
+        // Update active state
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+      });
+    });
+
+    // Initial layout
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+      iso.arrange({
+        transitionDuration: 0,
+      });
+    }, 100);
+  });
+}

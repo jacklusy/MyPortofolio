@@ -243,4 +243,94 @@ export const data = {
       githubUrl: project.view_code_url,
     }));
   },
+  portfolioData: {
+    certificates: [
+      {
+        title: "Full Stack Web Developer Certificate",
+        institution: "Orange Coding Academy",
+        collaboration: "Princess Sumaya University",
+        icon: "🚀",
+        image: "assets/img/portfolio-professional/certificate1.jpg",
+        keyPoints: [
+          "Earned after 7 months of intensive training",
+          "Demonstrates expertise in full-stack web development",
+        ],
+      },
+      {
+        title: "Full-Stack Developer Graduation",
+        institution: "Orange Coding Academy",
+        icon: "🎓",
+        image: "assets/img/portfolio-professional/certificate2.jpg",
+        keyPoints: [
+          "Graduated as a full-stack developer",
+          "Acknowledged invaluable guidance from a coach",
+        ],
+      },
+      {
+        title: "Front-End Development Internship Certificate",
+        institution: "Sky Software",
+        icon: "🌟",
+        image: "assets/img/portfolio-professional/certificate3.jpg",
+        keyPoints: [
+          "Built responsive web applications using HTML, CSS, JavaScript, and Angular",
+          "Completed a hands-on internship emphasizing user-centered design",
+        ],
+      },
+    ],
+    universityEvents: [
+      {
+        university: "Zaytoonah University",
+        event: "IT & Software Engineering Seminar",
+        date: "10-1-2024, 11:00 AM",
+        icon: "🎓",
+        image: "assets/img/portfolio-professional/event1.jpg",
+        keyPoints: [
+          "Hosted by PaymentsTech with insights from industry experts",
+          "Featured certificate distribution by the College's Dean",
+        ],
+      },
+      {
+        university: "Zaytoon University",
+        event: "DroidCon Amman Hackathon",
+        year: "2024",
+        icon: "🚀",
+        image: "assets/img/portfolio-professional/event2.jpg",
+        keyPoints: [
+          "75 students engaged in a three-day hackathon",
+          "Developed an innovative Android app to enhance Amman's tourism",
+        ],
+      },
+      {
+        university: "Zaytoonah University",
+        event: "Digital Health Workshop & Competition",
+        icon: "💡",
+        image: "assets/img/portfolio-professional/event3.jpg",
+        keyPoints: [
+          "Encouraged student participation in digital health innovation",
+          "Included a focused workshop led by Hamza Eljaafreh from Hakeem Academy",
+        ],
+      },
+      {
+        university: "Jordan University",
+        event: "Job Fair",
+        date: "May 12th",
+        icon: "💼",
+        image: "assets/img/portfolio-professional/event4.jpg",
+        keyPoints: [
+          "Over 100 local and international companies participated",
+          "Offered valuable insights into the labor market and networking opportunities",
+        ],
+      },
+      {
+        university: "Zaytoonah University",
+        event: "Problem-Solving Competition",
+        icon: "🏆",
+        image: "assets/img/portfolio-professional/event5.jpg",
+        keyPoints: [
+          "Challenged students to apply innovative, critical solutions",
+          "Recognized winners with announcements and cash prizes",
+        ],
+      },
+    ],
+  },
 };
