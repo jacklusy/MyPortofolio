@@ -5387,3 +5387,10 @@ body.loaded {
   margin-left: auto;
   margin-right: auto;
 }
+
+.portfolio-con-scroll {
+  overflow: scroll;
+  height: 1000px;
+  margin-top: 30px;
+  scrollbar-width: none;
+}
